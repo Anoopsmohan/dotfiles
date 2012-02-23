@@ -293,7 +293,7 @@ endfun
 autocmd FileType html,xhtml,xml,htmldjango,htmljinja,eruby,mako setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 autocmd bufnewfile,bufread *.rhtml setlocal ft=eruby
 autocmd BufNewFile,BufRead *.mako setlocal ft=mako
-autocmd BufNewFile,BufRead *.tmpl setlocal ft=htmljinja
+autocmd BufNewFile,BufRead *.tmpl,*.jinja setlocal ft=htmljinja
 autocmd BufNewFile,BufRead *.py_tmpl setlocal ft=python
 autocmd BufNewFile,BufRead *.html,*.htm  call s:SelectHTML()
 let html_no_rendering=1
@@ -352,3 +352,8 @@ autocmd FileType d setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4
 " cmake support
 " -------------
 autocmd BufNewFile,BufRead CMakeLists.txt setlocal ft=cmake
+
+" Support for less
+"
+call pathogen#infect()
+nnoremap ,m :w <BAR> !lessc % > %:t:r.css<CR><space>
